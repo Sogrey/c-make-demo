@@ -48,6 +48,7 @@ set(UEPackage_srcs
 # HEADER FILES
 set(UEPackage_hdrs
     Format.h
+    unistd.h
 )
 
 ADD_EXECUTABLE(UEPackage main.cpp
