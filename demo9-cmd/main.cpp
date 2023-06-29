@@ -17,13 +17,13 @@ int main(int argc, const char *argv[])
 
 #ifdef _WIN32
     char cmd[2048];
-    std::string test = StringFormat::Format("CALL ping \"{0}\"", "www.baidu.com");
+    std::string test = StringFormat::Format("CALL ping \"{0}\"", "baidu.com");
     strcpy(cmd, test.c_str());
     // 将命令行作为参数
     system(cmd);
 #else
     char line[300];
-    std::string test = StringFormat::Format("ping \"{0}\"", "www.baidu.com");
+    std::string test = StringFormat::Format("ping \"{0}\"", "baidu.com");
     FILE* fp;
     int count = 0;
     // system call
