@@ -253,6 +253,59 @@ Vs 版本对照关系整理如下（更新至2022.3.26）：
     return 0;
 }
 
+void checkVS(bool& res, std::string& VSName, int& MSCVER) {
+#ifdef _MSC_VER
+    res = true;
+    MSCVER = _MSC_VER;
+    //Vs 版本对照关系整理如下（更新至2022.3.26）：
+    //
+    //| `VC 版本`| `_MSC_VER`  |`VS 版本`| MSVC toolset version |
+    //| -------- | ----------- | ------- | -------------------- |
+    //| VC6.0    | 1200        | VS 6.0  |                      |
+    //| VC7.0    | 1300        | VS2002  |                      |
+    //| VC7.1    | 1310        | VS2003  |                      |
+    //| VC8.0    | 1400        | VS2005  | 80                   |
+    //| VC9.0    | 1500        | VS2008  | 90                   |
+    //| VC10.0   | 1600        | VS2010  | 100                  |
+    //| VC11.0   | 1700        | VS2012  | 110                  |
+    //| VC12.0   | 1800        | VS2013  | 120                  |
+    //| VC14.0   | 1900        | VS2015  | 140                  |
+    //| VC15.0   | [1910,1916] | VS2017  | 141                  |
+    //| VC16.0   | [1920,1929] | VS2019  | 142                  |
+    //| VC17.0   | [1930,)     | VS2022  | 143                  |
+
+#if _MSC_VER >= 1930
+    VSName = "Microsoft Visual Studio 2022";
+#elif _MSC_VER >= 1920
+    VSName = "Microsoft Visual Studio 2019";
+#elif _MSC_VER >= 1910
+    VSName = "Microsoft Visual Studio 2017";
+#elif _MSC_VER >= 1900
+    VSName = "Microsoft Visual Studio 2015";
+#elif _MSC_VER >= 1800
+    VSName = "Microsoft Visual Studio 2013";
+#elif _MSC_VER >= 1700
+    VSName = "Microsoft Visual Studio 2012";
+#elif _MSC_VER >= 1600
+    VSName = "Microsoft Visual Studio 2010";
+#elif _MSC_VER >= 1500
+    VSName = "Microsoft Visual Studio 2008";
+#elif _MSC_VER >= 1400
+    VSName = "Microsoft Visual Studio 2005";
+#elif _MSC_VER >= 1310
+    VSName = "Microsoft Visual Studio 2003";
+#elif _MSC_VER >= 1300
+    VSName = "Microsoft Visual Studio 2002";
+#elif _MSC_VER >= 1200
+    VSName = "VS 6.0";
+#else
+    VSName = "unknown";
+    res = false;
+#endif
+#else
+    res = false;
+#endif
+}
 
 /*
 
