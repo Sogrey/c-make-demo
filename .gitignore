@@ -1,1 +1,10 @@
 /*/build
+/*/.vs
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+/*/App.dir
+*.CMakeCache.txt
+/*/CMakeFiles
+/*/Debug
+/*/x64
